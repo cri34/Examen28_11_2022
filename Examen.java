@@ -2,6 +2,7 @@ public class Examen {
     public static void main(String[] args) {
         printArray(returnPrimers(1000));
         printArray( returnNumbersPrimers( returnPrimers(1000) ) );
+        System.out.print(descompFactorial(60));
     }
     public static boolean [] returnPrimers (int number){
         boolean [] isPrimer = new boolean[number];
@@ -47,6 +48,24 @@ public class Examen {
             System.out.print(" " + array[i]);
         }
         System.out.println();
+    }
+
+    //2 descomposicion factorial
+
+    public static String descompFactorial(int num){
+        int div = num;
+        int divident = 2;
+        String descompos="";
+
+        while(div!=1) {
+            if (div % divident == 0) {
+                descompos += " " + divident;
+                div = div / divident;
+                continue;
+            }
+            divident++;
+        }
+        return descompos;
     }
 }
 
