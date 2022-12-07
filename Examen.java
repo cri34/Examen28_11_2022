@@ -2,7 +2,9 @@ public class Examen {
     public static void main(String[] args) {
         printArray(returnPrimers(1000));
         printArray( returnNumbersPrimers( returnPrimers(1000) ) );
-        System.out.print(descompFactorial(60));
+        System.out.println(descompFactorial(60));
+        System.out.println(isWord("pare ´´' pare a de ; de hasta çpaco  + manipular","pare",47));
+        System.out.print(returnStringWithoutSubString("pare ´´' pare a de ; de hasta çpaco  + manipular","paco"));
     }
     public static boolean [] returnPrimers (int number){
         boolean [] isPrimer = new boolean[number];
@@ -66,6 +68,37 @@ public class Examen {
             divident++;
         }
         return descompos;
+    }
+
+    //3 eliminar aparicions de substring en text;
+    //pare
+    //pare ´´' pare a de ; de hasta çpaco  + manipular
+    public static boolean isWord (String text, String subtext ,int index){
+        int iSt = 0;
+        if (subtext.length() -1 + index > text.length() || index < 0)
+            return false;
+        for (int i = index; i < index + subtext.length(); i++){
+            if (text.charAt(i) != subtext.charAt(iSt)){
+                return false;
+            }
+            iSt++;
+        }
+        return true;
+    }
+    //pare ´´' pare a de ; de hasta çpaco  + manipular
+    public static String returnStringWithoutSubString(String text,String subtext){
+        String tWithoutString="";
+
+        for (int i = 0; i < text.length();i++){
+            if (isWord(text,subtext,i)){
+                i= i+subtext.length()-1;
+                continue;
+            }
+            tWithoutString+=""+ text.charAt(i);
+
+        }
+
+        return tWithoutString;
     }
 }
 
